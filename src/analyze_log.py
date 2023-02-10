@@ -19,5 +19,16 @@ def many_times_ordered(name, dish, orders):
     return count
 
 
+def wich_dish_not_ordered(name, orders):
+    order_set = set()
+    client_set = set()
+    for order in orders:
+        order_set.add(order["dish"])
+        if order["name"] == name:
+            client_set.add(order["dish"])
+
+    return order_set.difference(client_set)
+
+
 def analyze_log(path_to_file):
     raise NotImplementedError
