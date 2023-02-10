@@ -10,5 +10,14 @@ def favorite_order(name, orders):
     return max(count_orders, key=count_orders.get)
 
 
+def many_times_ordered(name, dish, orders):
+    count = 0
+    for order in orders:
+        if order["name"] == name and order["dish"] == dish:
+            count += 1
+
+    return count
+
+
 def analyze_log(path_to_file):
     raise NotImplementedError
