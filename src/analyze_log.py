@@ -30,5 +30,15 @@ def wich_dish_not_ordered(name, orders):
     return order_set.difference(client_set)
 
 
+def which_days_not_went(name, orders):
+    orders_set = set()
+    client_set = set()
+
+    for order in orders:
+        if order['name'] == name:
+            client_set.add(order['day'])
+        orders_set.add(order['day'])
+    return orders_set.difference(client_set)
+
 def analyze_log(path_to_file):
     raise NotImplementedError
