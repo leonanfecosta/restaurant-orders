@@ -1,3 +1,6 @@
+import csv
+
+
 def favorite_order(name, orders):
     count_orders = {}
     for order in orders:
@@ -40,5 +43,30 @@ def which_days_not_went(name, orders):
         orders_set.add(order['day'])
     return orders_set.difference(client_set)
 
+
 def analyze_log(path_to_file):
-    raise NotImplementedError
+    if not str(path_to_file).endswith('.csv'):
+        raise FileNotFoundError(f"Extensão inválida: {path_to_file}")
+    try:
+        orders_list = []
+        with open(path_to_file, "r") as f:
+            reader = csv.reader(f)
+            for row in reader:
+                orders_list.append(
+                    {"name": row[0], "dish": row[1], "day": row[2]})
+
+        favorite_order_maria = favorite_order("maria", orders_list)
+        many_times_ordered_arnaldo = many_times_ordered(
+            "arnaldo", "hamburguer", orders_list)
+        wich_dish_not_ordered_joao = wich_dish_not_ordered("joao", orders_list)
+        which_days_not_went_joao = which_days_not_went("joao", orders_list)
+
+        with open("data/mkt_campaign.txt", "w") as f:
+            f.write(
+                f"{favorite_order_maria}\n"
+                f"{many_times_ordered_arnaldo}\n"
+                f"{wich_dish_not_ordered_joao}\n"
+                f"{which_days_not_went_joao}\n"
+            )
+    except FileNotFoundError:
+        raise FileNotFoundError(f"Arquivo inexistente: {path_to_file}")
