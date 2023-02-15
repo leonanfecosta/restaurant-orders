@@ -1,4 +1,4 @@
-# Restaurant Orders 
+# Restaurant Orders 🍔🍕🍟
 
 ## 📃Descrição
 
@@ -81,6 +81,6 @@ Para executá-lo, use o comando `python3 -m src.analyze_log`
 
 Para executá-lo, use o comando `python3 -m src.track_orders`
 
- ## Autor
+ ## 👨🏻‍💻Autor
 
 O projeto foi desenvolvido por [Leonan Costa](https://github.com/leonanfecosta) como parte de um projeto para a curso de Desenvolvimento Web da Trybe.
